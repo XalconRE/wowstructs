@@ -64,7 +64,7 @@ types:
         repeat-expr: 2
       - id: heapptr_f0      # 0xF0
         type: pointer
-      - id: heaptr_f8       # 0xF8
+      - id: heapptr_f8      # 0xF8
         type: pointer
       - id: heapptr_100     # 0x100
         type: pointer
