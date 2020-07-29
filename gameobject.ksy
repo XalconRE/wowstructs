@@ -42,26 +42,30 @@ types:
         type: f4
   c_g_gameobject:
     seq:
-      - id: vtable          # 0xA8
-        type: pointer
-      - id: unknown_0x8     # 0xB0
+      - id: unknown_a8      # 0xA8
         type: u8
-      - id: unknown_0x10    # 0xB8
+      - id: unknown_b0      # 0xB0
         type: u8
-      - id: unknown_0x18    # 0xC0
+      - id: unknown_b8      # 0xB8
+        type: u8
+      - id: unknown_c0      # 0xC0
         type: u8
       - id: position        # 0xC8, 0xCC, 0xD0
         type: vec3f
-      - id: unknown_0x2c    # 0xD4
+      - id: unknown_d4      # 0xD4
         type: u4
         repeat: expr
         repeat-expr: 3
       - id: heapptr_e0      # 0xE0
         type: pointer
-      - id: unknown3        # 0xE8
+      - id: unknown_e8      # 0xE8
         type: u4
         repeat: expr
-        repeat-expr: 6
+        repeat-expr: 2
+      - id: heapptr_f0      # 0xF0
+        type: pointer
+      - id: heaptr_f8       # 0xF8
+        type: pointer
       - id: heapptr_100     # 0x100
         type: pointer
       - id: heapptr_108     # 0x108
