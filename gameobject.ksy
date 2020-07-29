@@ -1,5 +1,5 @@
 meta:
-  id: wow_game_object
+  id: wow_unit
   endian: le
 seq:
   - id: obj_data
@@ -7,7 +7,7 @@ seq:
     size: 0xA8
   - id: gobj_data
     type: c_g_gameobject
-    size: (0x200 - obj_data.size)
+    size: (0x280 - obj_data.size)
     
 types:
   c_g_object:
@@ -41,13 +41,158 @@ types:
         pos: 0xA0
         type: f4
   c_g_gameobject:
-    instances:
-      position:
-        pos: (0xC8 - 0xA8)
+    seq:
+      - id: vtable          # 0xA8
+        type: pointer
+      - id: unknown_0x8     # 0xB0
+        type: u8
+      - id: unknown_0x10    # 0xB8
+        type: u8
+      - id: unknown_0x18    # 0xC0
+        type: u8
+      - id: position        # 0xC8, 0xCC, 0xD0
         type: vec3f
-      display_id:
-        pos: (0x1A8 - 0xA8)
+      - id: unknown_0x2c    # 0xD4
         type: u4
+        repeat: expr
+        repeat-expr: 3
+      - id: heapptr_e0      # 0xE0
+        type: pointer
+      - id: unknown3        # 0xE8
+        type: u4
+        repeat: expr
+        repeat-expr: 6
+      - id: heapptr_100     # 0x100
+        type: pointer
+      - id: heapptr_108     # 0x108
+        type: pointer
+      - id: number_110      # 0x110
+        type: f4
+      - id: number_114      # 0x114
+        type: f4  
+      - id: unknown_118     # 0x118
+        type: f4
+      - id: unknown_11c     # 0x11C
+        type: f4
+      - id: unknown_120     # 0x120
+        type: f4
+      - id: unknown_124     # 0x124
+        type: f4
+      - id: unknown_128     # 0x124
+        type: f4
+      - id: unknown_12c     # 0x12C
+        type: f4
+      - id: unknown_130     # 0x130
+        type: f4
+      - id: unknown_134     # 0x134
+        type: f4
+      - id: unknown_138     # 0x138
+        type: f4
+      - id: unknown_13c     # 0x13C
+        type: f4
+      - id: position2       # 0x140
+        type: vec3f
+      - id: unknown_14c     # 0x14C
+        type: f4
+      - id: unknown_150     # 0x150
+        type: f4
+      - id: unknown_154     # 0x154
+        type: f4
+      - id: unknown_158     # 0x158
+        type: f4
+      - id: unknown_15c     # 0x15C
+        type: f4
+      - id: unknown_160     # 0x160
+        type: f4
+      - id: unknown_164     # 0x164
+        type: f4
+      - id: unknown_168     # 0x168
+        type: u4
+      - id: unknown_16c     # 0x16C
+        type: u4
+      - id: unknown_170     # 0x170
+        size: 4
+      - id: unknown_174     # 0x174
+        type: u4
+      - id: unknown_178     # 0x178
+        type: u4
+      - id: unknown_17c     # 0x17C
+        type: u4
+      - id: unknown_180     # 0x180
+        type: u8
+      - id: unknown_188     # 0x188
+        type: u8  
+      - id: unknown_190     # 0x190
+        type: u8
+      - id: unknown_198     # 0x198
+        type: u4
+      - id: unknown_19c     # 0x19C
+        type: u4
+      - id: unknown_1a0     # 0x1A0
+        type: u8
+        # Display data specific sub struct?
+      - id: display_id      # 0x1A8 0x0
+        type: u4
+      - id: unknown_1ac     # 0x1AC 0x4
+        type: u4
+        repeat: expr
+        repeat-expr: 5
+      - id: unknown_1c0     # 0x1C0 0x18
+        type: u8
+      - id: unknown_1c8     # 0x1C8 0x20
+        type: u8
+      - id: unknown_1d0     # 0x1D0 0x28
+        type: u8
+      - id: unknown_1d8     # 0x1D8 0x30
+        type: u8
+      - id: unknown_1e0     # 0x1E0 0x38
+        type: u8
+      - id: unknown_1e8     # 0x1E8 0x40
+        type: u8
+      - id: unknown_1f0     # 0x1F0 0x48
+        type: u8
+      - id: unknown_1f8     # 0x1F8 0x50
+        type: u8
+      - id: unknown_200     # 0x200 0x58
+        type: u4
+      - id: unknown_208     # 0x204 0x5C
+        type: u8
+      - id: unknown_20c     # 0x20C 0x64
+        type: u4
+      - id: unknown_210     # 0x210 0x68
+        type: f4
+      - id: unknown_214     # 0x214 0x6C
+        type: u4
+      - id: unknown_218     # 0x218 0x70
+        type: u4
+      - id: unknown_21c     # 0x21C 0x74
+        size: 4
+      - id: unknown_220     # 0x220 0x78
+        type: u4
+      - id: unknown_224     # 0x224 0x7C
+        type: u4
+      - id: unknown_228     # 0x228 0x80
+        type: u8
+      - id: unknown_230     # 0x230 0x88
+        type: u8
+      - id: unknown_238     # 0x238 0x90
+        type: u8
+      - id: heapptr_240     # 0x240 0x98; should point to [subobject + 0xB0] (or [objBase + 0x258])
+        type: pointer
+      - id: unknown_248     # 0x248 0xA0
+        type: u8
+      - id: unknown_250     # 0x250 0xA8
+        type: u8
+      - id: unknown_258     # 0x258 0xB0
+        type: u8
+      - id: unknown_260     # 0x260 0xB8
+        type: u8
+      - id: unknown_268     # 0x268 0xC0
+        type: u8
+      - id: unknown_270     # 0x270 0xC8
+        type: u8
+      - id: unknown_278     # 0x278 0xD0
+        type: u8
   wow_guid:
     seq:
       - id: lower
